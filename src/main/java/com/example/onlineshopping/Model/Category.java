@@ -21,9 +21,20 @@ public class Category {
 
     private String name;
     private String description;
+    private String image;
+
+    //relation to product
 
     @OneToMany(mappedBy = "category" )
     private List<Product> products = new ArrayList<>();
+
+    //relation to categoryparnt
+
+    @ManyToOne()
+    @JoinColumn(name = "categoryParentId")
+    private CategoryParent categoryParent;
+
+
 
     public Category(String description, String name, List<Product> products) {
         this.description = description;
