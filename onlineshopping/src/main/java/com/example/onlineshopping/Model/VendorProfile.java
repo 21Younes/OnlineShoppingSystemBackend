@@ -17,15 +17,13 @@ public class VendorProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long vendorProfileId;
 
-    @Setter
-    @Getter
     private String storeName;
-    @Setter
-    @Getter
+
     private String description;
-    @Setter
-    @Getter
+
     private double rating;
+
+    private String storeImage;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vendorId")

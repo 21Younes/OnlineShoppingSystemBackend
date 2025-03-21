@@ -20,6 +20,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId; // Unique identifier for the customer
     private String username;
+    private String sex;
+    private int age;
     private String email;
     private String password; // In a real system, this would be encrypted
 

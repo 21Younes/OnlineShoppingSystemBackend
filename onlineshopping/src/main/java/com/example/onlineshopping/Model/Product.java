@@ -2,7 +2,6 @@ package com.example.onlineshopping.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +21,7 @@ public class Product {
     private Long productId;
     private String name;
     private String description;
+    private String image;
     private double price;
     private int stockQuantity;
 
@@ -36,8 +36,16 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "categoryid" )
-    @JsonBackReference
+    @JsonIgnore
     private Category category;
+
+    // relation with categorybysexandage
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "specificCategoryId") // Ensure this matches the column name in DB
+    private SpecificCategory specificCategory;
+
 
     //relation with the product review
 
@@ -46,6 +54,8 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<OrderItem> items = new ArrayList<>();// The reviews of this product
+
+
 
     //constructors
 
